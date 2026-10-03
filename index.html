@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ramkesh Patel | Full Stack Developer</title>
+<meta name="description" content="Portfolio of Ramkesh Patel - MERN and Python Django developer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050b1f; --bg2:#0a1633; --card:#0e1d45; --line:#1f3570;
+  --blue:#3b82f6; --sky:#7cc4ff; --ice:#e6f1ff; --mute:#8fa6d6;
+  --head:'Sora',system-ui,sans-serif; --body:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ice);font-family:var(--body);line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+#glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(59,130,246,.22),transparent 65%);transform:translate(-50%,-50%);left:50%;top:50%}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--sky));z-index:100}
+main,header,footer{position:relative;z-index:1}
+nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;display:flex;gap:6px;padding:8px;
+  background:rgba(10,22,51,.72);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:999px}
+nav a{padding:8px 16px;border-radius:999px;font-size:.9rem;color:var(--mute);transition:.25s}
+nav a:hover,nav a.on{background:var(--blue);color:#fff}
+section{max-width:1100px;margin:0 auto;padding:110px 24px 40px}
+h2{font-family:var(--head);font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-bottom:12px;letter-spacing:-.02em}
+.sub{color:var(--mute);max-width:56ch;margin-bottom:44px}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:30px;padding-top:90px}
+.hi{color:var(--sky);font-weight:500;margin-bottom:10px}
+.hero h1{font-family:var(--head);font-weight:800;font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;letter-spacing:-.035em;
+  background:linear-gradient(120deg,#fff 20%,var(--sky) 60%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:200% auto;animation:shine 6s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.role{font-family:var(--head);font-size:clamp(1.1rem,2.4vw,1.5rem);margin:18px 0;min-height:2em;color:var(--ice)}
+.role b{color:var(--sky);font-weight:600}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--sky);margin-left:3px;vertical-align:middle;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--mute);max-width:50ch;margin-bottom:30px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:12px;font-weight:700;border:1px solid var(--blue);transition:.3s;cursor:pointer;font-family:var(--body);font-size:1rem}
+.btn.p{background:var(--blue);color:#fff;box-shadow:0 10px 30px -8px rgba(59,130,246,.7)}
+.btn.p:hover{transform:translateY(-3px);box-shadow:0 16px 36px -8px rgba(59,130,246,.9)}
+.btn.g{background:transparent;color:var(--sky)}
+.btn.g:hover{background:rgba(59,130,246,.15);transform:translateY(-3px)}
+
+/* 3D CUBE */
+.stage{height:380px;display:grid;place-items:center;perspective:1000px}
+.tilt{transform-style:preserve-3d;transition:transform .15s ease-out;position:relative;width:160px;height:160px}
+.cube{position:absolute;inset:0;transform-style:preserve-3d;animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotateX(360deg) rotateY(360deg)}}
+.face{position:absolute;width:160px;height:160px;display:grid;place-items:center;font-family:var(--head);font-weight:800;font-size:1.35rem;
+  background:linear-gradient(145deg,rgba(59,130,246,.45),rgba(14,29,69,.85));border:1.5px solid var(--sky);border-radius:14px;
+  box-shadow:inset 0 0 30px rgba(124,196,255,.3),0 0 30px rgba(59,130,246,.35);backface-visibility:visible}
+.f1{transform:translateZ(80px)}.f2{transform:rotateY(180deg) translateZ(80px)}
+.f3{transform:rotateY(90deg) translateZ(80px)}.f4{transform:rotateY(-90deg) translateZ(80px)}
+.f5{transform:rotateX(90deg) translateZ(80px)}.f6{transform:rotateX(-90deg) translateZ(80px)}
+.ring{position:absolute;left:50%;top:50%;border:1.5px dashed rgba(124,196,255,.45);border-radius:50%;transform-style:preserve-3d}
+.r1{width:300px;height:300px;margin:-150px;transform:rotateX(72deg);animation:rz 14s linear infinite}
+.r2{width:360px;height:360px;margin:-180px;transform:rotateY(72deg) rotateZ(0);animation:rz2 20s linear infinite reverse;border-color:rgba(59,130,246,.45)}
+@keyframes rz{to{transform:rotateX(72deg) rotateZ(360deg)}}
+@keyframes rz2{to{transform:rotateY(72deg) rotateZ(360deg)}}
+.orb{position:absolute;top:-7px;left:50%;width:14px;height:14px;border-radius:50%;background:var(--sky);box-shadow:0 0 18px var(--sky)}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:start}
+.about p{color:var(--mute);margin-bottom:14px}
+.stats{display:grid;gap:14px}
+.stat{padding:20px 22px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.stat strong{font-family:var(--head);font-size:1.8rem;color:var(--sky);display:block}
+.stat span{color:var(--mute);font-size:.92rem}
+
+/* SKILLS - 3D tilt cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;perspective:1000px}
+.card{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:18px;padding:26px;
+  transform-style:preserve-3d;transition:transform .2s ease-out,border-color .3s,box-shadow .3s;will-change:transform}
+.card:hover{border-color:var(--blue);box-shadow:0 24px 50px -20px rgba(59,130,246,.6)}
+.card h3{font-family:var(--head);font-size:1.15rem;margin-bottom:14px;transform:translateZ(30px)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;transform:translateZ(20px)}
+.chips span{padding:5px 12px;border-radius:999px;font-size:.85rem;background:rgba(59,130,246,.14);border:1px solid rgba(124,196,255,.25);color:var(--ice)}
+.bars{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px 40px}
+.bar label{display:flex;justify-content:space-between;font-size:.92rem;margin-bottom:6px}
+.bar label em{font-style:normal;color:var(--sky)}
+.track{height:8px;background:var(--card);border-radius:8px;overflow:hidden}
+.fill{height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,var(--blue),var(--sky));transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+
+/* TIMELINE */
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--blue),transparent)}
+.tl .item{position:relative;margin-bottom:26px}
+.tl .item::before{content:"";position:absolute;left:-34px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:3px solid var(--sky);box-shadow:0 0 14px var(--blue)}
+.item h3{font-family:var(--head);font-size:1.1rem}
+.item .meta{color:var(--sky);font-size:.88rem;margin-bottom:6px}
+.item p,.item li{color:var(--mute)}
+.item ul{padding-left:18px}
+
+/* PROJECT */
+.project{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;padding:34px;background:linear-gradient(150deg,var(--card),var(--bg2));
+  border:1px solid var(--line);border-radius:24px}
+.project ul{padding-left:18px;color:var(--mute);margin:14px 0 20px}
+.project li{margin-bottom:6px}
+.mock{perspective:900px}
+.screen{transform:rotateY(-18deg) rotateX(8deg);transition:transform .6s;border-radius:14px;border:1px solid var(--sky);background:var(--bg);
+  padding:12px;box-shadow:-24px 24px 50px -10px rgba(0,0,0,.6),0 0 40px rgba(59,130,246,.3)}
+.mock:hover .screen{transform:rotateY(0) rotateX(0)}
+.dots{display:flex;gap:5px;margin-bottom:10px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.shop{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.shop div{aspect-ratio:1;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--card));animation:pulse 3s ease-in-out infinite}
+.shop div:nth-child(2n){animation-delay:.6s;background:linear-gradient(135deg,var(--sky),var(--blue))}
+.shop div:nth-child(3n){animation-delay:1.2s}
+@keyframes pulse{50%{opacity:.55;transform:scale(.94)}}
+
+/* EDU + CONTACT */
+.edu{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.edu .card h3{font-size:1.05rem}.edu .card p{color:var(--mute);transform:translateZ(20px)}
+.edu .card b{font-family:var(--head);font-size:1.7rem;color:var(--sky);display:block;transform:translateZ(25px)}
+.contact{text-align:center}
+.contact .sub{margin-inline:auto}
+.links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+footer{text-align:center;padding:50px 20px 40px;color:var(--mute);font-size:.88rem}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:820px){
+  .hero,.about,.project{grid-template-columns:1fr}
+  .stage{height:320px;order:-1;transform:scale(.8)}
+  nav{width:calc(100% - 20px);justify-content:center;gap:0;padding:6px}nav a{padding:7px 9px;font-size:.78rem}
+  .project{padding:22px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.fill{width:var(--w)!important}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<canvas id="bg"></canvas>
+<div id="glow"></div>
+
+<nav aria-label="Main">
+  <a href="#home" class="on">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+  <a href="#journey">Journey</a><a href="#projects">Project</a><a href="#contact">Contact</a>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <p class="hi">Hello, I'm</p>
+    <h1>Ramkesh Patel</h1>
+    <p class="role">I build <b id="typed"></b><span class="caret"></span></p>
+    <p class="lead">Full stack developer who works with the MERN stack and is now going deeper into Python and Django. I like turning ideas into fast, clean web apps.</p>
+    <div class="btns">
+      <a class="btn p" href="#projects">See my work</a>
+      <a class="btn g" href="#contact">Contact me</a>
+    </div>
+  </div>
+  <div class="stage" aria-hidden="true">
+    <div class="tilt" id="tilt">
+      <div class="ring r1"><span class="orb"></span></div>
+      <div class="ring r2"><span class="orb"></span></div>
+      <div class="cube">
+        <div class="face f1">React</div><div class="face f2">Node.js</div>
+        <div class="face f3">MongoDB</div><div class="face f4">Django</div>
+        <div class="face f5">Python</div><div class="face f6">JS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="rv">About me</h2>
+  <div class="about rv">
+    <div>
+      <p>I am a B.Tech graduate (2022 to 2026) who enjoys building web applications from the interface down to the database.</p>
+      <p>I have worked with MongoDB, Express, React and Node, and I am now learning Django to build stronger back ends in Python. I have done virtual internships in Android development and Python full stack development.</p>
+      <p>I want to work somewhere that gives me real problems to solve, so I can keep learning and grow as a developer.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>2</strong><span>Internships completed</span></div>
+      <div class="stat"><strong>MERN</strong><span>Main stack, Django next</span></div>
+      <div class="stat"><strong>Live</strong><span>E-commerce project deployed</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="rv">Skills</h2>
+  <p class="sub rv">Move your mouse over the cards. The tools I use most.</p>
+  <div class="grid">
+    <div class="card tl3d rv"><h3>Languages</h3><div class="chips"><span>C</span><span>C++</span><span>Python</span><span>JavaScript</span><span>HTML</span><span>CSS</span></div></div>
+    <div class="card tl3d rv"><h3>Frontend</h3><div class="chips"><span>React.js</span><span>HTML5</span><span>CSS3</span><span>Bootstrap</span></div></div>
+    <div class="card tl3d rv"><h3>Backend</h3><div class="chips"><span>Node.js</span><span>Express.js</span><span>Django</span><span>Flask</span><span>REST APIs</span></div></div>
+    <div class="card tl3d rv"><h3>Database and tools</h3><div class="chips"><span>MongoDB</span><span>SQL</span><span>MySQL</span><span>PostgreSQL</span><span>Git</span><span>GitHub</span><span>VS Code</span></div></div>
+  </div>
+  <div class="bars rv" id="bars">
+    <div class="bar"><label>HTML / CSS <em>90%</em></label><div class="track"><div class="fill" style="--w:90%" data-w="90"></div></div></div>
+    <div class="bar"><label>JavaScript <em>80%</em></label><div class="track"><div class="fill" style="--w:80%" data-w="80"></div></div></div>
+    <div class="bar"><label>React and Node <em>75%</em></label><div class="track"><div class="fill" style="--w:75%" data-w="75"></div></div></div>
+    <div class="bar"><label>Python and Django <em>65%</em></label><div class="track"><div class="fill" style="--w:65%" data-w="65"></div></div></div>
+  </div>
+</section>
+
+<section id="journey">
+  <h2 class="rv">Internships</h2>
+  <p class="sub rv">Hands-on experience from two virtual internships.</p>
+  <div class="tl">
+    <div class="item rv">
+      <h3>Python Full Stack Developer</h3><div class="meta">Virtual internship</div>
+      <ul>
+        <li>Built and deployed web apps with Python (Django/Flask), HTML, CSS and JavaScript.</li>
+        <li>Worked on RESTful APIs, MySQL/PostgreSQL integration and server-side logic.</li>
+      </ul>
+    </div>
+    <div class="item rv">
+      <h3>Android Developer</h3><div class="meta">Virtual internship</div>
+      <p>Integrated APIs, managed databases and deployed apps to the Google Play Store.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="rv">Project</h2>
+  <div class="project rv">
+    <div>
+      <h3 style="font-family:var(--head);font-size:1.5rem">E-commerce website</h3>
+      <ul>
+        <li>Fully responsive shop with an easy, friendly interface.</li>
+        <li>Product browsing and interactive UI components.</li>
+        <li>Works across browsers, on both mobile and desktop.</li>
+        <li>Managed with Git and deployed live on GitHub Pages.</li>
+      </ul>
+      <div class="chips" style="margin-bottom:22px"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Git</span></div>
+      <a class="btn p" href="#" id="projLink">View live project</a>
+    </div>
+    <div class="mock" aria-hidden="true">
+      <div class="screen"><div class="dots"><i></i><i></i><i></i></div>
+        <div class="shop"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2 class="rv">Education</h2>
+  <div class="edu" style="margin-top:30px">
+    <div class="card tl3d rv"><b>B.Tech</b><h3>2022 to 2026</h3><p>Babulal Tarabai Institute of Research and Technology</p></div>
+    <div class="card tl3d rv"><b>89%</b><h3>Class 12th, 2022</h3><p>MP Board</p></div>
+    <div class="card tl3d rv"><b>78%</b><h3>Class 10th, 2020</h3><p>MP Board</p></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <h2 class="rv">Let's work together</h2>
+  <p class="sub rv">Open to jobs and internships. Send me a message and I will reply soon.</p>
+  <div class="links rv">
+    <a class="btn p" href="mailto:mrramkeah83@gmail.com">Email me</a>
+    <a class="btn g" href="tel:+918305172716">+91 83051 72716</a>
+    <a class="btn g" href="#" id="gh">GitHub</a>
+    <a class="btn g" href="#" id="li">LinkedIn</a>
+  </div>
+</section>
+</main>
+
+<footer>&copy; 2026 Ramkesh Patel. Built with HTML, CSS and JavaScript.</footer>
+
+<script>
+// Typing roles
+const roles=["MERN stack apps","Django back ends","responsive websites","REST APIs"];
+const t=document.getElementById('typed');let ri=0,ci=0,del=false;
+(function type(){
+  const w=roles[ri];t.textContent=w.slice(0,ci);
+  if(!del&&ci===w.length){del=true;return setTimeout(type,1400)}
+  if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
+  ci+=del?-1:1;setTimeout(type,del?40:80);
+})();
+
+// Scroll progress + active nav
+const links=[...document.querySelectorAll('nav a')];
+const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  let cur=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<innerHeight*.4)cur=i});
+  links.forEach((a,i)=>a.classList.toggle('on',i===cur));
+},{passive:true});
+
+// Reveal + skill bars
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');
+    e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w+'%');io.unobserve(e.target)}
+}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// Cursor glow
+const glow=document.getElementById('glow');
+addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+
+// 3D tilt: hero cube + cards
+const tilt=document.getElementById('tilt');
+document.querySelector('.stage').addEventListener('pointermove',e=>{
+  const r=e.currentTarget.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  tilt.style.transform=`rotateY(${x*50}deg) rotateX(${-y*50}deg)`;
+});
+document.querySelector('.stage').addEventListener('pointerleave',()=>tilt.style.transform='');
+document.querySelectorAll('.tl3d').forEach(c=>{
+  c.addEventListener('pointermove',e=>{
+    const r=c.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform=`rotateY(${x*16}deg) rotateX(${-y*16}deg) translateY(-4px)`;
+  });
+  c.addEventListener('pointerleave',()=>c.style.transform='');
+});
+
+// Particle network background
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');let W,H,P=[];
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;
+  P=Array.from({length:Math.min(70,Math.floor(W/18))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}))}
+size();addEventListener('resize',size);
+(function draw(){
+  cx.clearRect(0,0,W,H);
+  P.forEach((p,i)=>{
+    p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    cx.fillStyle='rgba(124,196,255,.6)';cx.beginPath();cx.arc(p.x,p.y,1.6,0,6.3);cx.fill();
+    for(let j=i+1;j<P.length;j++){const q=P[j],d=Math.hypot(p.x-q.x,p.y-q.y);
+      if(d<130){cx.strokeStyle=`rgba(59,130,246,${.25*(1-d/130)})`;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}
+  });
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
